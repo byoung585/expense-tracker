@@ -2,6 +2,14 @@
 
 import psycopg2, sys
 
+# TODO:
+    # Catch errors from execute statements
+    # Querying capabilities
+    # Ability to specify a date (maybe)
+    # Ability to specify income
+        # Some way to indicate that I got paid back for part of a transaction (ie paid for someone's lunch, got venmo'd)
+            # Specifying total income for the month more or less cancels this out i think?
+
 def print_usage():
     usage = '''
         -------------- Expense Tracker --------------

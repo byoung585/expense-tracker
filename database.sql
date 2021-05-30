@@ -1,9 +1,17 @@
+CREATE OR REPLACE FUNCTION validate_category(cat varchar(64))
+RETURNS bool AS
+$$
+BEGIN
+    RETURN cat IN ('rent', 'utilities', 'groceries', 'food', 'entertainment', 'gas', 'home items', 'donations', 'misc');
+END;
+$$ LANGUAGE PLPGSQL;
+
 -- Create table
 DROP TABLE IF EXISTS Expenses;
 CREATE TABLE Expenses (
     id SERIAL PRIMARY KEY,
     amount numeric,
-    category varchar(64) CHECK(category IN ('rent', 'groceries', 'food', 'entertainment', 'misc')),
+    category varchar(64) CHECK(validate_category(category)),
     comment varchar(128),
     date_added date
 );
